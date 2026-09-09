@@ -1,0 +1,16 @@
+info:
+  name: Nuke All TIPPS
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{baseUrl}}/ingest/nuke"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

@@ -11,6 +11,11 @@ def get_all():
     titles = db.session.scalars(db.select(Title)).all()
     return jsonify([t.to_dict() for t in titles]), 200
 
+@tipp_bp.route("/count", methods=["GET"])
+def get_count():
+    title_count = db.session.scalar(db.select(db.func.count(Title.id)))
+    return jsonify({"count": title_count}), 200
+
 # Typing DIRECT in route params
 @tipp_bp.route("/<int:title_id>", methods=["GET"])
 def get_one(title_id):

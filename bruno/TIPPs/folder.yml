@@ -1,0 +1,7 @@
+info:
+  name: TIPPs
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit
