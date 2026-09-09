@@ -1,11 +1,11 @@
 info:
-  name: Untitled
+  name: Run Test Ingest
   type: http
   seq: 1
 
 http:
-  method: GET
-  url: ""
+  method: POST
+  url: "{{baseUrl}}/ingest/run_test"
   auth: inherit
 
 settings:

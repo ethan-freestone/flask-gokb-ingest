@@ -1,0 +1,5 @@
+name: Local Flask
+variables:
+  - name: baseUrl
+    value: http://localhost:5000
+    description: ""
