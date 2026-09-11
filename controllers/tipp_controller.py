@@ -8,8 +8,17 @@ tipp_bp = Blueprint("tipp", __name__, url_prefix="/tipp")
 
 @tipp_bp.route("", methods=["GET"])
 def get_all():
-    titles = db.session.scalars(db.select(Title)).all()
-    return jsonify([t.to_dict() for t in titles]), 200
+    title_page = db.paginate(db.select(Title))
+
+    return jsonify({
+        "total": title_page.total,
+        "page": title_page.page,
+        "per_page": title_page.per_page,
+        "pages": title_page.pages,
+        "has_next": title_page.has_next,
+        "has_prev": title_page.has_prev,
+        "items": [item.to_dict() for item in title_page.items]
+    }), 200
 
 @tipp_bp.route("/count", methods=["GET"])
 def get_count():
